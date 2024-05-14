@@ -15,7 +15,7 @@ sBtn.addEventListener("keyup", e => {
 
       const xValueElement = document.getElementById('xValues');
       const xValue = xValueElement.value;
-      if (xArray.length < 11 && xValue != "") {
+      if (xArray.length < 11 && xValue != "" && xvalue != NaN) {
         xArray.push(xValue);
         xValueElement.value = "";
 
@@ -34,24 +34,23 @@ sBtn.addEventListener("keyup", e => {
 });
 
 calc.addEventListener("click", () => {
-  if(xArray.length == 11)
-    {
-      
-  getYvalues();
-  localStorage.setItem('xArray', JSON.stringify(xArray));
-  localStorage.setItem('yArray', JSON.stringify(yArray));
-  localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
-  calc.innerHTML = "..."
-  setTimeout(() => {
-    window.open('chart.html', '_blank');
-  }, 1000);
+  if (xArray.length == 11) {
 
-  calc.innerHTML = "Calculate"
+    getYvalues();
+    localStorage.setItem('xArray', JSON.stringify(xArray));
+    localStorage.setItem('yArray', JSON.stringify(yArray));
+    localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
+    calc.innerHTML = "..."
+    setTimeout(() => {
+      window.open('chart.html', '_blank');
+    }, 500);
 
-    }
-    else{
-      alert("x array is empty or not up to 11 values")
-    }
+    calc.innerHTML = "Calculate"
+
+  }
+  else {
+    alert("x array is empty or not up to 11 values")
+  }
 });
 
 defaultCalculator.addEventListener("click", () => {
@@ -64,7 +63,7 @@ defaultCalculator.addEventListener("click", () => {
   defaultCalculator.innerHTML = "..."
   setTimeout(() => {
     window.open('chart.html', '_blank');
-  }, 1000);
+  }, 500);
 
   defaultCalculator.innerHTML = "Calculate Default Values";
 
@@ -74,7 +73,6 @@ defaultCalculator.addEventListener("click", () => {
 
 function getYvalues() {
   for (let i = 0; i < 11; i++) {
-    //let polynomialValues = -(0.00000007 * defaultXarray[i]^13) + (0.00000814* defaultXarray[i]^12) - (0.000483 * defaultXarray[i]^11) + (0.01905 * defaultXarray[i]^10) - (0.5273* defaultXarray[i]^9) + (10.5310 * defaultXarray[i]^8) - (153.340*defaultXarray[i]^7)+ (1627.10 * defaultXarray[i]^6)- (12427.262 * defaultXarray[i]^5) + (62666.47 * defaultXarray[i]^4)- (52029.160* defaultXarray[i]^3) + (486218.9* defaultXarray[i]^2) - (636400.05* defaultXarray[i])+ 288782.5
     let polynomialValues = (0.00000243 * Math.pow(defaultXarray[i], 10)) -
       (0.00028009 * Math.pow(defaultXarray[i], 9)) +
       (0.01401814 * Math.pow(defaultXarray[i], 8)) -

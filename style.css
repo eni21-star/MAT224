@@ -67,6 +67,7 @@ button{
     border: none;
     margin-left: 30px;
     font-family: poppins;
+    cursor: pointer;
     font-size: 18px;
     background-color: rgb(33, 33, 33);
     color: white;
@@ -88,4 +89,8 @@ h2
 {
     color: white;
 
+}
+label{
+    color: white;
+    width: 30px;
 }
