@@ -1,36 +1,43 @@
 const sBtn = document.getElementById('xValues');
 const calc = document.getElementById('calc');
+const defaultCalculator = document.getElementById('calc1');
 const label = document.getElementById('arraytext');
-//label.innerHTML = "Array Vales are ";
-let xArray = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-//let xArray = [];
+let xArray = [];
+let defaultXarray = [1, 3, 5, 8, 10, 12, 15, 16, 18, 19, 22];
+
 let staticYArray = [1635.382, 1545.991, 1559.160, 1540.759, 1546.098, 1430.118, 1391.97, 1413.034, 1415.819, 1240.260, 1237.000, 1529.764, 1558.667, 1660.256, 1687.338]
 let yArray = [];
 
-// sBtn.addEventListener("keyup", e => {
-//   if (e.key == "Enter") {
+sBtn.addEventListener("keyup", e => {
+  if (e.key == "Enter") {
 
+    try {
 
-//     const xValueElement = document.getElementById('xValues');
-//     const xValue = xValueElement.value;
-//     if (xArray.length < 25) {
-//       xArray.push(xValue);
-//       xValueElement.value = "";
+      const xValueElement = document.getElementById('xValues');
+      const xValue = xValueElement.value;
+      if (xArray.length < 11 && xValue != "") {
+        xArray.push(xValue);
+        xValueElement.value = "";
 
-//     }
+      }
+      else {
+        alert("please enter a value or you have reached the maximum number of values allowed");
+      }
+      if (xArray.length == 11) {
+        label.innerHTML = "Array values are " + xArray;
+      }
+    } catch (error) {
+      alert(error)
+    }
 
-//     for (let i = 0; i < xArray.length; i++) {
-//       label.innerHTML += xArray[i] + ", ";
-//     }
-
-//   }
-// });
+  }
+});
 
 calc.addEventListener("click", () => {
-  for (let i = 0; i < 15; i++) {
-    let polynomialValues = -((0.00218) * xArray[i] ** 6) + (0.0384 * xArray[i] ** 5) + (0.01494 * xArray[i] ** 4) - (8.008845 * xArray[i] ** 3) + (68.07311 * xArray[i] ** 2) - (221.88364 * xArray[i]) + 1796.95;
-    yArray.push(polynomialValues);
-  }
+  if(xArray.length == 11)
+    {
+      
+  getYvalues();
   localStorage.setItem('xArray', JSON.stringify(xArray));
   localStorage.setItem('yArray', JSON.stringify(yArray));
   localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
@@ -39,5 +46,47 @@ calc.addEventListener("click", () => {
     window.open('chart.html', '_blank');
   }, 1000);
 
-  calc.innerHTML = "..."
+  calc.innerHTML = "Calculate"
+
+    }
+    else{
+      alert("x array is empty or not up to 11 values")
+    }
 });
+
+defaultCalculator.addEventListener("click", () => {
+  getYvalues();
+  localStorage.setItem('xArray', JSON.stringify(defaultXarray));
+  localStorage.setItem('yArray', JSON.stringify(yArray));
+  localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
+
+
+  defaultCalculator.innerHTML = "..."
+  setTimeout(() => {
+    window.open('chart.html', '_blank');
+  }, 1000);
+
+  defaultCalculator.innerHTML = "Calculate Default Values";
+
+})
+
+
+
+function getYvalues() {
+  for (let i = 0; i < 11; i++) {
+    //let polynomialValues = -(0.00000007 * defaultXarray[i]^13) + (0.00000814* defaultXarray[i]^12) - (0.000483 * defaultXarray[i]^11) + (0.01905 * defaultXarray[i]^10) - (0.5273* defaultXarray[i]^9) + (10.5310 * defaultXarray[i]^8) - (153.340*defaultXarray[i]^7)+ (1627.10 * defaultXarray[i]^6)- (12427.262 * defaultXarray[i]^5) + (62666.47 * defaultXarray[i]^4)- (52029.160* defaultXarray[i]^3) + (486218.9* defaultXarray[i]^2) - (636400.05* defaultXarray[i])+ 288782.5
+    let polynomialValues = (0.00000243 * Math.pow(defaultXarray[i], 10)) -
+      (0.00028009 * Math.pow(defaultXarray[i], 9)) +
+      (0.01401814 * Math.pow(defaultXarray[i], 8)) -
+      (0.39896826 * Math.pow(defaultXarray[i], 7)) +
+      (7.09892803 * Math.pow(defaultXarray[i], 6)) -
+      (81.72359017 * Math.pow(defaultXarray[i], 5)) +
+      (608.61993 * Math.pow(defaultXarray[i], 4)) -
+      (2845.75699 * Math.pow(defaultXarray[i], 3)) +
+      (7801.93312 * Math.pow(defaultXarray[i], 2)) -
+      (10905.06235 * defaultXarray[i]) +
+      7050.65818;
+    yArray.push(polynomialValues);
+
+  }
+}

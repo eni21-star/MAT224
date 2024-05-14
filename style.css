@@ -70,10 +70,12 @@ button{
     font-size: 18px;
     background-color: rgb(33, 33, 33);
     color: white;
+    margin-bottom: 10px;
 }
 .btnDiv
 {
     display: flex;
+    flex-direction: column;
 }
 h1{
     color: cornsilk;
@@ -81,4 +83,9 @@ h1{
     font-weight: 400;
     font-style: normal;
     
+}
+h2
+{
+    color: white;
+
 }

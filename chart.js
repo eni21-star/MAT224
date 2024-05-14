@@ -3,6 +3,8 @@ window.onload = function() {
     let xArray = JSON.parse(localStorage.getItem('xArray'));
     let yArray = JSON.parse(localStorage.getItem('yArray'));
     let staticYArray = JSON.parse(localStorage.getItem('staticYArray'));
+    console.log(yArray)
+    console.log(staticYArray);
 
 
     
@@ -12,7 +14,7 @@ var myChart = new Chart(ctx, {
     data: {
         labels: xArray,
         datasets: [{
-            label: 'Static Y Array',
+            label: 'Regenerated Naira equivalent of Pound',
             data: staticYArray,
             borderColor: 'rgba(255, 99, 132, 1)',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -21,7 +23,7 @@ var myChart = new Chart(ctx, {
             pointBackgroundColor: 'rgba(255, 99, 132, 1)',
             fill: false
         }, {
-            label: 'Y Array',
+            label: 'Naira equivalent of Pound Sterling',
             data: yArray,
             borderColor: 'rgba(75, 192, 192, 1)',
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -35,15 +37,25 @@ var myChart = new Chart(ctx, {
         responsive: true,
         scales: {
             x: {
+                title: {
+                    display: true,
+                    text: 'days of consideration'
+                },
                 beginAtZero: true,
                 grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
+                    color: 'rgba(255, 255, 255, 0.1)' 
+                },
+                ticks: {
+                    color: 'white' 
                 }
             },
             y: {
                 beginAtZero: true,
                 grid: {
-                    color: 'rgba(0, 0, 0, 0.1)'
+                    color: 'rgba(255, 255, 255, 0.1)' 
+                },
+                ticks: {
+                    color: 'white' 
                 }
             }
         },
