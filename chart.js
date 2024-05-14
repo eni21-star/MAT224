@@ -23,7 +23,7 @@ window.onload = function () {
                 pointBackgroundColor: 'rgba(255, 99, 132, 1)',
                 fill: false
             }, {
-                label: 'Naira equivalent of Pound Sterling',
+                label: 'Naira equivalent of Pound',
                 data: yArray,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
@@ -66,7 +66,7 @@ window.onload = function () {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Relationship Between The Exchange Rate Of Pound And Naira',
+                    text: 'RELATIONSHIP BETWEEN THE EXCHANGE RATE OF POUND AND NAIRA',
                     font: {
                         size: 20
     

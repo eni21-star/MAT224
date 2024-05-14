@@ -15,11 +15,10 @@ sBtn.addEventListener("keyup", e => {
 
       const xValueElement = document.getElementById('xValues');
       const xValue = xValueElement.value;
-      if (xArray.length < 11 && xValue != "" && xvalue != NaN) {
+      if (xArray.length < 11 && xValue != "" && !isNaN(xValue)) {
         xArray.push(xValue);
         xValueElement.value = "";
-
-      }
+    }
       else {
         alert("please enter a value or you have reached the maximum number of values allowed");
       }
