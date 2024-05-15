@@ -20,10 +20,7 @@ sBtn.addEventListener("keyup", e => {
         xValueElement.value = "";
     }
       else {
-        alert("please enter a value or you have reached the maximum number of values allowed");
-      }
-      if (xArray.length == 11) {
-        label.innerHTML = "Array values are " + xArray;
+        alert("please enter a value for X or you have reached the maximum number of values allowed");
       }
     } catch (error) {
       alert(error)
@@ -39,6 +36,7 @@ calc.addEventListener("click", () => {
     localStorage.setItem('xArray', JSON.stringify(xArray));
     localStorage.setItem('yArray', JSON.stringify(yArray));
     localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
+    alert('X values are : ' + '\n'+ xArray + '\n' + 'Y values are : ' + '\n' + yArray);
     calc.innerHTML = "..."
     setTimeout(() => {
       window.open('chart.html', '_blank');
@@ -48,7 +46,7 @@ calc.addEventListener("click", () => {
 
   }
   else {
-    alert("x array is empty or not up to 11 values")
+    alert("X values must be 11 in number")
   }
 });
 
@@ -59,6 +57,8 @@ defaultCalculator.addEventListener("click", () => {
   localStorage.setItem('staticYArray', JSON.stringify(staticYArray));
 
 
+
+alert('X values are : ' + '\n'+ defaultXarray + '\n' + 'Y values are : ' + '\n' + yArray);
   defaultCalculator.innerHTML = "..."
   setTimeout(() => {
     window.open('chart.html', '_blank');
